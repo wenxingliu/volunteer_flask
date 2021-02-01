@@ -169,17 +169,17 @@ def edit_classroom(classroom_id):
     raise NotImplementedError
 
 
-@app.route('/volunteers/search')
+@app.route('/volunteers/search', methods=['POST'])
 def search_volunteer():
     raise NotImplementedError
 
 
-@app.route('/students/search')
+@app.route('/students/search', methods=['POST'])
 def search_student():
     raise NotImplementedError
 
 
-@app.route('/classrooms/search')
+@app.route('/classrooms/search', methods=['POST'])
 def search_classroom():
     raise NotImplementedError
 
