@@ -5,3 +5,4 @@ Flask-Cors==3.0.8
 Flask-Migrate
 Flask-Script
 psycopg2
+flask_wtf
