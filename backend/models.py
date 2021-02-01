@@ -41,9 +41,19 @@ class Volunteer(db.Model):
         volunteer_info = {
             "id": self.id,
             "name": self.name,
-            "age": self.age,
             "email": self.email,
             "seeking_student": str(self.seeking_student)
+        }
+        return volunteer_info
+
+    def long(self):
+        volunteer_info = {
+            "id": self.id,
+            "name": self.name,
+            "age": self.age,
+            "email": self.email,
+            "seeking_student": str(self.seeking_student),
+            "seeking_description": self.seeking_description
         }
         return volunteer_info
 
@@ -78,9 +88,19 @@ class Student(db.Model):
         student_info = {
             "id": self.id,
             "name": self.name,
-            "age": self.age,
             "email": self.email,
             "seeking_volunteer": str(self.seeking_volunteer)
+        }
+        return student_info
+
+    def long(self):
+        student_info = {
+            "id": self.id,
+            "name": self.name,
+            "age": self.age,
+            "email": self.email,
+            "seeking_volunteer": str(self.seeking_volunteer),
+            "seeking_description": self.seeking_description
         }
         return student_info
 
@@ -98,6 +118,28 @@ class Classroom(db.Model):
     end_date = db.Column(db.Date, nullable=True)
     volunteer_id = db.Column(db.Integer, nullable=False)
     student_id = db.Column(db.Integer, nullable=False)
+
+    def insert(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise Exception(f"Failed to create Classroom {self.description}")
+        finally:
+            db.session.close()
+
+    def short(self):
+        classroom_info = {
+            "id": self.id,
+            "description": self.description,
+            "time": str(self.time),
+            "start_date": str(self.start_date),
+            "end_date": str(self.end_date),
+            "volunteer_id": self.volunteer_id,
+            "student_id": self.student_id
+        }
+        return classroom_info
 
     def __repr__(self):
         return f'<Volunteer {self.volunteer_id}: Student {self.student_id}>'

@@ -31,7 +31,67 @@ def get_students():
     return jsonify(response), 200
 
 
-@app.route('/volunteer', methods=['POST'])
+@app.route('/volunteer/<int:volunteer_id>')
+def get_one_volunteer_info(volunteer_id):
+    volunteer = Volunteer.query.get(volunteer_id)
+    return jsonify(volunteer.long()), 200
+
+
+@app.route('/student/<int:student_id>')
+def get_one_student_info(student_id):
+    student = Student.query.get(student_id)
+    return jsonify(student.long()), 200
+
+
+@app.route('/volunteer/<int:volunteer_id>/classrooms')
+def get_classrooms_of_one_volunteer(volunteer_id):
+    volunteer = Volunteer.query.get(volunteer_id)
+
+    classrooms = (db.session
+        .query(Classroom, Student.name)
+        .filter_by(volunteer_id=volunteer_id)
+        .join(Student, Classroom.student_id == Student.id)
+        .order_by(Classroom.id)
+        .all())
+    
+    classroom_info_list = [{**classroom.short(), **{"student_name": student_name}} 
+                           for classroom, student_name in classrooms]
+    
+    response = {
+        "volunteer_id": volunteer_id,
+        "volunteer_name": volunteer.name,
+        "count": len(classrooms),
+        "classrooms": classroom_info_list
+    }
+
+    return jsonify(response), 200
+
+
+@app.route('/student/<int:student_id>/classrooms')
+def get_classrooms_of_one_student(student_id):
+    student = Student.query.get(student_id)
+
+    classrooms = (db.session
+        .query(Classroom, Volunteer.name)
+        .filter_by(student_id=student_id)
+        .join(Volunteer, Classroom.volunteer_id == Volunteer.id)
+        .order_by(Classroom.id)
+        .all())
+    
+    classroom_info_list = [{**classroom.short(), **{"volunteer_name": volunteer_name}} 
+                           for classroom, volunteer_name in classrooms]
+    
+    response = {
+        "student_id": student_id,
+        "student_name": student.name,
+        "count": len(classrooms),
+        "classrooms": classroom_info_list
+    }
+    
+    return jsonify(response), 200
+
+
+@app.route('/volunteer/register', methods=['POST'])
 def register_volunteer():
     body = request.get_json()
     volunteer = Volunteer(
@@ -52,7 +112,7 @@ def register_volunteer():
         }), 200
 
 
-@app.route('/student', methods=['POST'])
+@app.route('/student/register', methods=['POST'])
 def register_student():
     body = request.get_json()
     student = Student(
@@ -67,6 +127,25 @@ def register_student():
     )
 
     student.insert()
+
+    return jsonify({
+        "success": True
+        }), 200
+
+
+@app.route('/classroom/create', methods=['POST'])
+def create_classroom():
+    body = request.get_json()
+    classroom = Classroom(
+        description=body['description'],
+        time = body['time'],
+        start_date = body['start_date'],
+        end_date = body.get('end_date'),
+        volunteer_id = body['volunteer_id'],
+        student_id = body['student_id']
+    )
+
+    classroom.insert()
 
     return jsonify({
         "success": True
