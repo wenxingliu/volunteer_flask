@@ -8,8 +8,7 @@ import util as util
 @app.route('/')
 @app.route('/home')
 def index():
-    user = {'username': 'Miguel'}
-    return render_template('index.html', title='Volunteer-Home', user=user)
+    return render_template('pages/home.html', title='Welcome!')
 
 
 @app.route('/volunteers')
@@ -153,6 +152,36 @@ def create_classroom():
     return jsonify({
         "success": True
         }), 200
+
+
+@app.route('/volunteer/<int:volunteer_id>/edit', methods=['PATCH'])
+def edit_volunteer(volunteer_id):
+    raise NotImplementedError
+
+
+@app.route('/student/<int:student_id>/edit', methods=['PATCH'])
+def edit_student(student_id):
+    raise NotImplementedError
+
+
+@app.route('/classroom/<int:classroom_id>/edit', methods=['PATCH'])
+def edit_classroom(classroom_id):
+    raise NotImplementedError
+
+
+@app.route('/volunteers/search')
+def search_volunteer():
+    raise NotImplementedError
+
+
+@app.route('/students/search')
+def search_student():
+    raise NotImplementedError
+
+
+@app.route('/classrooms/search')
+def search_classroom():
+    raise NotImplementedError
 
 
 if __name__ == '__main__':
