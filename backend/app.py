@@ -4,9 +4,12 @@ from common import app, db, migrate
 from models import Volunteer, Student, Classroom
 import util as util
 
+
+@app.route('/')
 @app.route('/home')
 def index():
-  return 'Welcome'
+    user = {'username': 'Miguel'}
+    return render_template('index.html', title='Volunteer-Home', user=user)
 
 
 @app.route('/volunteers')

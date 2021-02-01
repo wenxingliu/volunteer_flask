@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 
 import config as config  
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../frontend/templates/')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config.DEBUG
