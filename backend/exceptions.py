@@ -10,7 +10,8 @@ class APIException(GenericException):
 
 
 class DBException(GenericException):
-    def __init__(self, error, status_code=500):
+    def __init__(self, error, status_code=422):
         super(DBException, self).__init__(
-            error=f"Internal Error: {error}", 
+            error=f"Unprocessable Entity: {error}", 
             status_code=status_code)
+

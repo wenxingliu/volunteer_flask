@@ -66,6 +66,20 @@ def get_one_volunteer_info(volunteer_id):
 def get_one_student_info(student_id):
     try:
         student = util.query_model(model=Student, id=student_id)
+        return jsonify(student.long()), 200
+    
+    except GenericException as e:
+        raise e
+
+    except:
+        raise APIException("Internal Error", 500)
+
+
+@app.route('/classroom/<int:classroom_id>')
+def get_one_classroom_info(classroom_id):
+    try:
+        classroom = util.query_model(model=Classroom, id=classroom_id)
+        return jsonify(classroom.long()), 200
     
     except GenericException as e:
         raise e
@@ -377,7 +391,7 @@ def remove_classroom(classroom_id):
 def search_volunteer():
     """ Search for pattern match in name and seeking_description"""
     try:
-        search_term = request.form.get('search_term', '')
+        search_term = request.get_json().get('search_term', '')
         matching_volunteers = util.search_by_name_pattern(model=Volunteer, search_term=search_term)
         matching_volunteers_info = [volunteer.long() for volunteer in matching_volunteers]
 
@@ -400,7 +414,7 @@ def search_volunteer():
 def search_student():
     """ Search for pattern match in name and seeking_description"""
     try:
-        search_term = request.form.get('search_term', '')
+        search_term = request.get_json().get('search_term', '')
         matching_students = util.search_by_name_pattern(model=Student, search_term=search_term)
         matching_students_info = [student.long() for student in matching_students]
 

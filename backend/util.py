@@ -37,5 +37,5 @@ def search_by_name_pattern(model, search_term):
 
     if not matching_list:
         raise APIException("Resource Not Found", 404)
-    
+
     return matching_list

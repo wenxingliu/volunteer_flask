@@ -194,7 +194,7 @@ class Classroom(db.Model):
         finally:
             db.session.close()
 
-    def short(self):
+    def long(self):
         classroom_info = {
             "id": self.id,
             "description": self.description,
