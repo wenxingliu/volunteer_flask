@@ -7,7 +7,7 @@ The `./backend` directory contains a Flask server with endpoints, configure, and
 
 [View the README.md within ./backend for more details.](./backend/README.md)
 
-[View the API Document.md within ./backend for more details on API endpoints.](./backend/API Documentation.md)
+[View the API Document.md within ./backend for more details on API endpoints.](./backend/API.md)
 
 
 ### TO-DOs:
