@@ -40,7 +40,7 @@ class Volunteer(db.Model):
 
     def update(self):
         try:
-            db.sesson.commit()
+            db.session.commit()
         except:
             db.session.rollback()
             raise DBException(f"Failed to update Volunteer {self.name}")
@@ -81,6 +81,9 @@ class Volunteer(db.Model):
     def __repr__(self):
         return f'<Volunteer {self.id}: {self.name} (Age {self.age})>'
 
+    def __hash__(self):
+        return self.id
+
 
 class Student(db.Model):
     __tablename__ = 'student'
@@ -107,7 +110,7 @@ class Student(db.Model):
 
     def update(self):
         try:
-            db.sesson.commit()
+            db.session.commit()
         except:
             db.session.rollback()
             raise DBException(f"Failed to update Student {self.name}")
@@ -147,6 +150,9 @@ class Student(db.Model):
     def __repr__(self):
         return f'<Student {self.id}: {self.name} (Age {self.age})>'
 
+    def __hash__(self):
+        return self.id
+
 
 class Classroom(db.Model):
     __tablename__ = 'classroom'
@@ -171,7 +177,7 @@ class Classroom(db.Model):
 
     def update(self):
         try:
-            db.sesson.commit()
+            db.session.commit()
         except:
             db.session.rollback()
             raise DBException(f"Failed to update Classroom {self.name}")
@@ -202,3 +208,7 @@ class Classroom(db.Model):
 
     def __repr__(self):
         return f'<Volunteer {self.volunteer_id}: Student {self.student_id}>'
+
+    def __hash__(self):
+        return self.id
+

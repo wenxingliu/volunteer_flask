@@ -89,7 +89,7 @@ def get_classrooms_of_one_volunteer(volunteer_id):
         if not classrooms:
             raise APIException("Resource Not Found", 404)
 
-        classroom_info_list = [{**classroom.short(), **{"student_name": student_name}} 
+        classroom_info_list = [{**classroom.long(), **{"student_name": student_name}} 
                                for classroom, student_name in classrooms]
         
         response = {
@@ -123,7 +123,7 @@ def get_classrooms_of_one_student(student_id):
         if not classrooms:
             raise APIException("Resource Not Found", 404)    
     
-        classroom_info_list = [{**classroom.short(), **{"volunteer_name": volunteer_name}} 
+        classroom_info_list = [{**classroom.long(), **{"volunteer_name": volunteer_name}} 
                                for classroom, volunteer_name in classrooms]
         
         response = {
@@ -224,42 +224,68 @@ def create_classroom():
         raise APIException("Bad Request", 400)
 
 
-@app.route('/volunteer/<int:volunteer_id>/edit', methods=['PATCH'])
+@app.route('/volunteer/<int:volunteer_id>', methods=['PATCH'])
 def edit_volunteer(volunteer_id):
     try:
         body = request.get_json()
 
         volunteer = util.query_model(model=Volunteer, id=volunteer_id)
-        volunteer.name = body['name']
-        volunteer.age = util.compute_int(body['age'])
-        volunteer.gender = body['gender']
-        volunteer.image_link = body['image_link']
-        volunteer.profile_link = body['profile_link']
-        volunteer.seeking_student = util.compute_boolean(body['seeking_student'])
-        volunteer.seeking_description=body['seeking_description']
+
+        if 'name' in body:
+            volunteer.name = body['name']
+        if 'age' in body:
+            volunteer.age = util.compute_int(body['age'])
+        if 'gender' in body:
+            volunteer.gender = body['gender']
+        if 'image_link' in body:
+            volunteer.image_link = body['image_link']
+        if 'profile_link' in body:
+            volunteer.profile_link = body['profile_link']
+        if 'seeking_student' in body:
+            volunteer.seeking_student = util.compute_boolean(body['seeking_student'])
+        if 'seeking_description' in body:
+            volunteer.seeking_description=body['seeking_description']
+        
         volunteer.update()
+
+        return jsonify({
+            "success": True
+            }), 200
 
     except GenericException as e:
         raise e
 
-    except:
+    except Exception as e:
         raise APIException("Bad Request", 400)
 
 
-@app.route('/student/<int:student_id>/edit', methods=['PATCH'])
+@app.route('/student/<int:student_id>', methods=['PATCH'])
 def edit_student(student_id):
     try:
         body = request.get_json()
 
         student = util.query_model(model=Student, id=student_id)
-        student.name = body['name']
-        student.age = util.compute_int(body['age'])
-        student.gender = body['gender']
-        student.image_link = body['image_link']
-        student.profile_link = body['profile_link']
-        student.seeking_volunteer = util.compute_boolean(body['seeking_volunteer'])
-        student.seeking_description=body['seeking_description']
+
+        if 'name' in body:
+            student.name = body['name']
+        if 'age' in body:
+            student.age = util.compute_int(body['age'])
+        if 'gender' in body:
+            student.gender = body['gender']
+        if 'image_link' in body:
+            student.image_link = body['image_link']
+        if 'profile_link' in body:
+            student.profile_link = body['profile_link']
+        if 'seeking_volunteer' in body:
+            student.seeking_volunteer = util.compute_boolean(body['seeking_volunteer'])
+        if 'seeking_description' in body:
+            student.seeking_description=body['seeking_description']
+        
         student.update()
+
+        return jsonify({
+            "success": True
+            }), 200
 
     except GenericException as e:
         raise e
@@ -268,17 +294,27 @@ def edit_student(student_id):
         raise APIException("Bad Request", 400)
 
 
-@app.route('/classroom/<int:classroom_id>/edit', methods=['PATCH'])
+@app.route('/classroom/<int:classroom_id>', methods=['PATCH'])
 def edit_classroom(classroom_id):
     try:
         body = request.get_json()
 
         classroom = util.query_model(model=Classroom, id=classroom_id)
-        classroom.description = body['description']
-        classroom.time = body['time']
-        classroom.start_date = body['start_date']
-        classroom.end_date = body['end_date']
+
+        if 'description' in body:
+            classroom.description = body['description']
+        if 'time' in body:
+            classroom.time = body['time']
+        if 'start_date' in body:
+            classroom.start_date = body['start_date']
+        if 'end_date' in body:
+            classroom.end_date = body['end_date']
+
         classroom.update()
+
+        return jsonify({
+            "success": True
+            }), 200
 
     except GenericException as e:
         raise e
@@ -286,20 +322,101 @@ def edit_classroom(classroom_id):
     except:
         raise APIException("Bad Request", 400)
 
+@app.route('/volunteer/<int:volunteer_id>', methods=['DELETE'])
+def remove_volunteer(volunteer_id):
+    try:
+        volunteer = util.query_model(model=Volunteer, id=volunteer_id)
+        volunteer.delete()
+
+        return jsonify({
+            "success": True
+            }), 200
+
+    except GenericException as e:
+        raise e
+
+    except:
+        raise APIException("Internal Error", 500)
+
+
+@app.route('/student/<int:student_id>', methods=['DELETE'])
+def remove_student(student_id):
+    try:
+        student = util.query_model(model=Student, id=student_id)
+        student.delete()
+
+        return jsonify({
+            "success": True
+            }), 200
+
+    except GenericException as e:
+        raise e
+
+    except:
+        raise APIException("Internal Error", 500)
+
+
+@app.route('/classroom/<int:classroom_id>', methods=['DELETE'])
+def remove_classroom(classroom_id):
+    try:
+        classroom = util.query_model(model=Classroom, id=classroom_id)
+        classroom.delete()
+        
+        return jsonify({
+            "success": True
+            }), 200
+
+    except GenericException as e:
+        raise e
+
+    except:
+        raise APIException("Internal Error", 500)
+
 
 @app.route('/volunteers/search', methods=['POST'])
 def search_volunteer():
-    raise NotImplementedError
+    """ Search for pattern match in name and seeking_description"""
+    try:
+        search_term = request.form.get('search_term', '')
+        matching_volunteers = util.search_by_name_pattern(model=Volunteer, search_term=search_term)
+        matching_volunteers_info = [volunteer.long() for volunteer in matching_volunteers]
+
+        response = {
+            "search_term": search_term,
+            "count": len(matching_volunteers),
+            "volunteers": matching_volunteers_info
+        }
+        
+        return jsonify(response), 200
+
+    except GenericException as e:
+        raise e
+
+    except:
+        raise APIException("Internal Error", 500)
 
 
 @app.route('/students/search', methods=['POST'])
 def search_student():
-    raise NotImplementedError
+    """ Search for pattern match in name and seeking_description"""
+    try:
+        search_term = request.form.get('search_term', '')
+        matching_students = util.search_by_name_pattern(model=Student, search_term=search_term)
+        matching_students_info = [student.long() for student in matching_students]
 
+        response = {
+            "search_term": search_term,
+            "count": len(matching_students),
+            "students": matching_students_info
+        }
+        
+        return jsonify(response), 200
 
-@app.route('/classrooms/search', methods=['POST'])
-def search_classroom():
-    raise NotImplementedError
+    except GenericException as e:
+        raise e
+
+    except:
+        raise APIException("Internal Error", 500)
 
 
 @app.errorhandler(GenericException)
