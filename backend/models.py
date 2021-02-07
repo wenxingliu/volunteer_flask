@@ -1,4 +1,5 @@
 from common import db, app, migrate
+from exceptions import DBException
 
 
 # Volunteer - Classroom: One to many
@@ -33,9 +34,29 @@ class Volunteer(db.Model):
             db.session.commit()
         except:
             db.session.rollback()
-            raise Exception(f"Failed to register Volunteer {self.name}")
+            raise DBException(f"Failed to register Volunteer {self.name}")
         finally:
             db.session.close()
+
+    def update(self):
+        try:
+            db.sesson.commit()
+        except:
+            db.session.rollback()
+            raise DBException(f"Failed to update Volunteer {self.name}")
+        finally:
+            db.session.close()
+
+    def delete(self):
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise DBException(f"Failed to remove Volunteer {self.name}")
+        finally:
+            db.session.close()
+
 
     def short(self):
         volunteer_info = {
@@ -80,7 +101,26 @@ class Student(db.Model):
             db.session.commit()
         except:
             db.session.rollback()
-            raise Exception(f"Failed to register Student {self.name}")
+            raise DBException(f"Failed to register Student {self.name}")
+        finally:
+            db.session.close()
+
+    def update(self):
+        try:
+            db.sesson.commit()
+        except:
+            db.session.rollback()
+            raise DBException(f"Failed to update Student {self.name}")
+        finally:
+            db.session.close()
+
+    def delete(self):
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise DBException(f"Failed to remove Student {self.name}")
         finally:
             db.session.close()
 
@@ -125,7 +165,26 @@ class Classroom(db.Model):
             db.session.commit()
         except:
             db.session.rollback()
-            raise Exception(f"Failed to create Classroom {self.description}")
+            raise DBException(f"Failed to create Classroom {self.description}")
+        finally:
+            db.session.close()
+
+    def update(self):
+        try:
+            db.sesson.commit()
+        except:
+            db.session.rollback()
+            raise DBException(f"Failed to update Classroom {self.name}")
+        finally:
+            db.session.close()
+
+    def delete(self):
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise DBException(f"Failed to remove Classroom {self.name}")
         finally:
             db.session.close()
 
