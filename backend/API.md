@@ -19,9 +19,9 @@ The API will return three error types when requests fail:
 
 ## Endpoints
 
-## Resource: Volunteer
+### Resource: Volunteer
 
-### GET `/volunteers`
+#### GET `/volunteers`
 - Fetches a list of volunteers with detailed information
 - Request Arguments: None
 - Sample Response
@@ -39,7 +39,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### GET `/volunteer/<volunteer_id>`
+#### GET `/volunteer/<volunteer_id>`
 - Fetches a volunteer information given the ID
 - Request Arguments: volunteer ID
 - Sample Response
@@ -54,7 +54,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### POST `/volunteer/register`
+#### POST `/volunteer/register`
 - Creates a volunteer profile.
 - Sample Body
 ```
@@ -74,7 +74,7 @@ The API will return three error types when requests fail:
 {"success": True}
 ```
 
-### PATCH `volunteer/<volunteer_id>`
+#### PATCH `volunteer/<volunteer_id>`
 - Patches a specific volunteer given its ID.
 - Request Arguments: volunteer ID
 - Sample Body
@@ -89,7 +89,7 @@ The API will return three error types when requests fail:
 {"success": True}
 ```
 
-### DELETE `/volunteer/<volunteer_id>`
+#### DELETE `/volunteer/<volunteer_id>`
 - Deletes a specific volunteer given its ID.
 - Request Arguments: volunteer ID
 - Success Response
@@ -99,7 +99,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### POST `/volunteers/search`
+#### POST `/volunteers/search`
 - Get a list of volunteers based on a search term in name or description, not case sensitive.
 - Sample Body
 ```
@@ -126,9 +126,9 @@ The API will return three error types when requests fail:
 ```
 
 
-## Resource: Student
+### Resource: Student
 
-### GET `/students`
+#### GET `/students`
 - Fetches a list of students with detailed information
 - Request Arguments: None
 - Sample Response
@@ -146,7 +146,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### GET `/student/<student_id>`
+#### GET `/student/<student_id>`
 - Fetches a student information given the ID
 - Request Arguments: None
 - Sample Response
@@ -161,7 +161,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### POST `/student/register`
+#### POST `/student/register`
 - Creates a student profile.
 - Sample Body
 ```
@@ -181,7 +181,7 @@ The API will return three error types when requests fail:
 {"success": True}
 ```
 
-### PATCH `student/<student_id>`
+#### PATCH `student/<student_id>`
 - Patches a specific student given its ID.
 - Request Arguments: student ID
 - Sample Body
@@ -196,7 +196,7 @@ The API will return three error types when requests fail:
 {"success": True}
 ```
 
-### DELETE `/student/<student_id>`
+#### DELETE `/student/<student_id>`
 - Deletes a specific student given its ID.
 - Request Arguments: student ID
 - Success Response
@@ -206,7 +206,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### POST `/students/search`
+#### POST `/students/search`
 - Get a list of students based on a search term in name or description, not case sensitive.
 - Sample Body
 ```
@@ -232,9 +232,9 @@ The API will return three error types when requests fail:
 }
 ```
 
-## Resource: Classroom
+### Resource: Classroom
 
-### GET `classroom/<classroom_id>`
+#### GET `classroom/<classroom_id>`
 - Fetch one classroom given its ID
 - Request Arguments: classroom ID
 - Sample Response
@@ -250,7 +250,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### GET `/volunteer/<volunteer_id>/classrooms`
+#### GET `/volunteer/<volunteer_id>/classrooms`
 - Fetches a list of classrooms owned by a given volunteer
 - Request Arguments: volunteer ID
 - Sample Response
@@ -274,7 +274,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### GET `/student/<student_id>/classrooms`
+#### GET `/student/<student_id>/classrooms`
 - Fetches a list of classrooms owned by a given student
 - Request Arguments: student ID
 - Sample Response
@@ -298,7 +298,7 @@ The API will return three error types when requests fail:
 }
 ```
 
-### PATCH `classroom/<classroom_id>`
+#### PATCH `classroom/<classroom_id>`
 - Patches a specific classroom given its ID.
 - Request Arguments: classroom ID
 - Sample Body
@@ -313,7 +313,7 @@ The API will return three error types when requests fail:
 {"success": True}
 ```
 
-### DELETE `/classroom/<classroom_id>`
+#### DELETE `/classroom/<classroom_id>`
 - Deletes a specific classroom given its ID.
 - Request Arguments: classroom ID
 - Success Response
