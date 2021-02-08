@@ -1,3 +1,6 @@
+from flask import jsonify
+
+
 class GenericException(Exception):
     def __init__(self, error, status_code):
         self.error = error
@@ -15,3 +18,6 @@ class DBException(GenericException):
             error=f"Unprocessable Entity: {error}", 
             status_code=status_code)
 
+class AuthError(GenericException):
+    def __init__(self, error, status_code):
+        super(AuthError, self).__init__(jsonify(error), status_code)

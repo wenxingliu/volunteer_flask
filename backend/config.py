@@ -7,3 +7,8 @@ DEBUG = True
 
 # TODO IMPLEMENT DATABASE URL
 SQLALCHEMY_DATABASE_URI = 'postgres://wenxingliu@localhost:5432/volunteer'
+
+# Auth0 config
+AUTH0_DOMAIN = 'find-a-volunteer.us.auth0.com'
+ALGORITHMS = ['RS256']
+API_AUDIENCE = 'volunteer'
