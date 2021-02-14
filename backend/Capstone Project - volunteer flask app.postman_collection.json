@@ -6,398 +6,428 @@
 	},
 	"item": [
 		{
-			"name": "homepage",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/home",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"home"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query volunteers",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query one volunteer",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "register volunteer",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Wenxing Liu\",\n    \"age\": 33,\n    \"gender\": \"Female\",\n    \"email\": \"wenxingliu@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_student\": \"Yes\",\n    \"seeking_description\": \"Teaches Chinese, Maths, English\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "public",
+			"item": [
+				{
+					"name": "homepage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/home",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"home"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/register",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"register"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "edit volunteer",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"seeking_student\": \"No\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "volunteer",
+			"item": [
+				{
+					"name": "query volunteers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/1/edit",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"1",
-						"edit"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete volunteer",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "search volunteer",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query students",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/students",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"students"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query one student",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/student/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"student",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "register student",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Zhan Shi\",\n    \"age\": 34,\n    \"gender\": \"Male\",\n    \"email\": \"zhanshi@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_volunteer\": \"Yes\",\n    \"seeking_description\": \"I want to practice my Chinese, and English!\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "query one volunteer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}:{{port}}/student/register",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"student",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "edit student",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Micheal Shi\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "register volunteer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Wenxing Liu\",\n    \"age\": 33,\n    \"gender\": \"Female\",\n    \"email\": \"wenxingliu@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_student\": \"Yes\",\n    \"seeking_description\": \"Teaches Chinese, Maths, English\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/register",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"register"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}:{{port}}/student/1/edit",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"student",
-						"1",
-						"edit"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete student",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "search student",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query one classroom",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/1/classrooms",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"1",
-						"classrooms"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query all classrooms of one volunteer",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/volunteer/1/classrooms",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"volunteer",
-						"1",
-						"classrooms"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "query all classrooms of one student",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/student/1/classrooms",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"student",
-						"1",
-						"classrooms"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create classroom",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"description\": \"English practice\",\n    \"time\": \"08:00\",\n    \"start_date\": \"2021-02-01\",\n    \"end_date\": \"2021-03-01\",\n    \"volunteer_id\": 1,\n    \"student_id\": 1\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "edit volunteer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"seeking_student\": \"No\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/1/edit",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"1",
+								"edit"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}:{{port}}/classroom/create",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"classroom",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "edit classroom",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Micheal Shi\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "delete volunteer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}:{{port}}/classroom/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"classroom",
-						"1"
-					]
+				{
+					"name": "search volunteer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "delete classroom",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}:{{port}}/classroom/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"classroom",
-						"1"
-					]
+			"name": "student",
+			"item": [
+				{
+					"name": "query students",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{volunteer-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/students",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query one student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/student/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"student",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Zhan Shi\",\n    \"age\": 34,\n    \"gender\": \"Male\",\n    \"email\": \"zhanshi@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_volunteer\": \"Yes\",\n    \"seeking_description\": \"I want to practice my Chinese, and English!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/student/register",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"student",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit student",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Micheal Shi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/student/1/edit",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"student",
+								"1",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "classroom",
+			"item": [
+				{
+					"name": "query one classroom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/1/classrooms",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"1",
+								"classrooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query all classrooms of one student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/student/1/classrooms",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"student",
+								"1",
+								"classrooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query all classrooms of one volunteer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/volunteer/1/classrooms",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"volunteer",
+								"1",
+								"classrooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create classroom",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"English practice\",\n    \"time\": \"08:00\",\n    \"start_date\": \"2021-02-01\",\n    \"end_date\": \"2021-03-01\",\n    \"volunteer_id\": 1,\n    \"student_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/classroom/create",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"classroom",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit classroom",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Micheal Shi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/classroom/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"classroom",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete classroom",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/classroom/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"classroom",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -428,6 +458,18 @@
 		{
 			"key": "port",
 			"value": "8002"
+		},
+		{
+			"key": "admin-token",
+			"value": ""
+		},
+		{
+			"key": "volunteer-token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpIeHl3UG1IT2NFVUxLNl9XQUo2SCJ9.eyJpc3MiOiJodHRwczovL2ZpbmQtYS12b2x1bnRlZXIudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTExNDE2ODIwMjY1MzY0MDkwNDUxIiwiYXVkIjpbInZvbHVudGVlciIsImh0dHBzOi8vZmluZC1hLXZvbHVudGVlci51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjEzMjgzODA4LCJleHAiOjE2MTMyOTEwMDgsImF6cCI6IkpQRmRnTDVQSzIxaXR5NGZRMlNyRW1udWpTblVDMGl0Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbXX0.v3K-HMWvIyXhzsuQl6gRuSmXHT3HbI04kigyYVNqiCLW1gdDuz3uzJaO3KKgIeqzSMbv9nlmk2s8ZARjs2_L1j9es-uh6hfp3F27sSHVMBNQ9zhfYBdpyDDm1T_h4SQSkJTjOJ9N2WU_99ZL3OOcPDqsiDbbs_ZhSkxpSIbzwPkyubXZt29JpD2JA2B76ilZwCEPkhsIrWxRyXXftc8Cih1RfwcZ_hmV06641CUCsF-cIB2JNym69KhRW9I_KVyAFtlKJ8aGoHHFhsDoEn9-hYli0W6dy_LCTKSFswYUDaPq6z4p54K4QeFiysTmdOK_CWg0x0wMGaVkaZVTMPkyUg"
+		},
+		{
+			"key": "student-token",
+			"value": ""
 		}
 	]
 }
