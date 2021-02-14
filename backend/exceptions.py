@@ -1,6 +1,3 @@
-from flask import jsonify
-
-
 class GenericException(Exception):
     def __init__(self, error, status_code):
         self.error = error
@@ -20,4 +17,4 @@ class DBException(GenericException):
 
 class AuthError(GenericException):
     def __init__(self, error, status_code):
-        super(AuthError, self).__init__(jsonify(error), status_code)
+        super(AuthError, self).__init__(error, status_code)

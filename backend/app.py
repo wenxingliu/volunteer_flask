@@ -1,6 +1,8 @@
 from flask import render_template, request, Response, flash, redirect, url_for, jsonify
+from flask_cors import cross_origin
 
-from common import app, db, migrate
+from auth import auth as auth
+from common import app, db, migrate, auth0
 from models import Volunteer, Student, Classroom
 from exceptions import APIException, GenericException
 import util as util
@@ -13,6 +15,7 @@ def index():
 
 
 @app.route('/volunteers')
+@auth.requires_auth("get:volunteers")
 def get_volunteers():
     try:
         volunteers = util.query_model(model=Volunteer, id=None)
