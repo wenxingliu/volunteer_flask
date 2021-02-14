@@ -406,7 +406,7 @@ def remove_classroom(classroom_id):
 
 
 @app.route('/volunteers/search', methods=['POST'])
-@auth.requires_auth("post:volunteer")
+@auth.requires_auth("get:volunteers")
 def search_volunteer():
     """ Search for pattern match in name and seeking_description"""
     try:
@@ -430,7 +430,7 @@ def search_volunteer():
 
 
 @app.route('/students/search', methods=['POST'])
-@auth.requires_auth("post:student")
+@auth.requires_auth("get:students")
 def search_student():
     """ Search for pattern match in name and seeking_description"""
     try:
