@@ -35,6 +35,7 @@ def get_volunteers():
 
 
 @app.route('/students')
+@auth.requires_auth("get:students")
 def get_students():
     try:
         students = util.query_model(model=Student, id=None)
@@ -53,6 +54,7 @@ def get_students():
 
 
 @app.route('/volunteer/<int:volunteer_id>')
+@auth.requires_auth("get:volunteers")
 def get_one_volunteer_info(volunteer_id):
     try:
         volunteer = util.query_model(model=Volunteer, id=volunteer_id)
@@ -66,6 +68,7 @@ def get_one_volunteer_info(volunteer_id):
 
 
 @app.route('/student/<int:student_id>')
+@auth.requires_auth("get:students")
 def get_one_student_info(student_id):
     try:
         student = util.query_model(model=Student, id=student_id)
@@ -79,6 +82,7 @@ def get_one_student_info(student_id):
 
 
 @app.route('/classroom/<int:classroom_id>')
+@auth.requires_auth("get:classrooms")
 def get_one_classroom_info(classroom_id):
     try:
         classroom = util.query_model(model=Classroom, id=classroom_id)
@@ -92,6 +96,7 @@ def get_one_classroom_info(classroom_id):
 
 
 @app.route('/volunteer/<int:volunteer_id>/classrooms')
+@auth.requires_auth("get:classrooms")
 def get_classrooms_of_one_volunteer(volunteer_id):
     try:
         volunteer = util.query_model(model=Volunteer, id=volunteer_id)
@@ -126,6 +131,7 @@ def get_classrooms_of_one_volunteer(volunteer_id):
 
 
 @app.route('/student/<int:student_id>/classrooms')
+@auth.requires_auth("get:classrooms")
 def get_classrooms_of_one_student(student_id):
     try:
         student = util.query_model(model=Student, id=student_id)
@@ -160,6 +166,7 @@ def get_classrooms_of_one_student(student_id):
 
 
 @app.route('/volunteer/register', methods=['POST'])
+@auth.requires_auth("post:volunteer")
 def register_volunteer():
     try:
         body = request.get_json()
@@ -188,6 +195,7 @@ def register_volunteer():
 
 
 @app.route('/student/register', methods=['POST'])
+@auth.requires_auth("post:student")
 def register_student():
     try:
         body = request.get_json()
@@ -216,6 +224,7 @@ def register_student():
 
 
 @app.route('/classroom/create', methods=['POST'])
+@auth.requires_auth("post:classroom")
 def create_classroom():
     try:
         body = request.get_json()
@@ -242,6 +251,7 @@ def create_classroom():
 
 
 @app.route('/volunteer/<int:volunteer_id>', methods=['PATCH'])
+@auth.requires_auth("patch:volunteer")
 def edit_volunteer(volunteer_id):
     try:
         body = request.get_json()
@@ -277,6 +287,7 @@ def edit_volunteer(volunteer_id):
 
 
 @app.route('/student/<int:student_id>', methods=['PATCH'])
+@auth.requires_auth("patch:student")
 def edit_student(student_id):
     try:
         body = request.get_json()
@@ -312,6 +323,7 @@ def edit_student(student_id):
 
 
 @app.route('/classroom/<int:classroom_id>', methods=['PATCH'])
+@auth.requires_auth("patch:classroom")
 def edit_classroom(classroom_id):
     try:
         body = request.get_json()
@@ -340,6 +352,7 @@ def edit_classroom(classroom_id):
         raise APIException("Bad Request", 400)
 
 @app.route('/volunteer/<int:volunteer_id>', methods=['DELETE'])
+@auth.requires_auth("delete:volunteer")
 def remove_volunteer(volunteer_id):
     try:
         volunteer = util.query_model(model=Volunteer, id=volunteer_id)
@@ -357,6 +370,7 @@ def remove_volunteer(volunteer_id):
 
 
 @app.route('/student/<int:student_id>', methods=['DELETE'])
+@auth.requires_auth("delete:student")
 def remove_student(student_id):
     try:
         student = util.query_model(model=Student, id=student_id)
@@ -374,6 +388,7 @@ def remove_student(student_id):
 
 
 @app.route('/classroom/<int:classroom_id>', methods=['DELETE'])
+@auth.requires_auth("delete:classroom")
 def remove_classroom(classroom_id):
     try:
         classroom = util.query_model(model=Classroom, id=classroom_id)
@@ -391,6 +406,7 @@ def remove_classroom(classroom_id):
 
 
 @app.route('/volunteers/search', methods=['POST'])
+@auth.requires_auth("post:volunteer")
 def search_volunteer():
     """ Search for pattern match in name and seeking_description"""
     try:
@@ -414,6 +430,7 @@ def search_volunteer():
 
 
 @app.route('/students/search', methods=['POST'])
+@auth.requires_auth("post:student")
 def search_student():
     """ Search for pattern match in name and seeking_description"""
     try:
