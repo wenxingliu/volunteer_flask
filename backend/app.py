@@ -11,7 +11,7 @@ import util as util
 @app.route('/')
 @app.route('/home')
 def index():
-    return 'Welcome!'
+    return jsonify({"text": 'Welcome!', "success": True}), 200
 
 
 @app.route('/volunteers')
