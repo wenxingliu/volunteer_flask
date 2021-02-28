@@ -92,6 +92,16 @@
 				{
 					"name": "edit volunteer",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{volunteer-token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -104,15 +114,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}:{{port}}/volunteer/1/edit",
+							"raw": "{{host}}:{{port}}/volunteer/2",
 							"host": [
 								"{{host}}"
 							],
 							"port": "{{port}}",
 							"path": [
 								"volunteer",
-								"1",
-								"edit"
+								"2"
 							]
 						}
 					},
@@ -465,7 +474,7 @@
 		},
 		{
 			"key": "volunteer-token",
-			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpIeHl3UG1IT2NFVUxLNl9XQUo2SCJ9.eyJpc3MiOiJodHRwczovL2ZpbmQtYS12b2x1bnRlZXIudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTExNDE2ODIwMjY1MzY0MDkwNDUxIiwiYXVkIjpbInZvbHVudGVlciIsImh0dHBzOi8vZmluZC1hLXZvbHVudGVlci51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjEzMjgzODA4LCJleHAiOjE2MTMyOTEwMDgsImF6cCI6IkpQRmRnTDVQSzIxaXR5NGZRMlNyRW1udWpTblVDMGl0Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbXX0.v3K-HMWvIyXhzsuQl6gRuSmXHT3HbI04kigyYVNqiCLW1gdDuz3uzJaO3KKgIeqzSMbv9nlmk2s8ZARjs2_L1j9es-uh6hfp3F27sSHVMBNQ9zhfYBdpyDDm1T_h4SQSkJTjOJ9N2WU_99ZL3OOcPDqsiDbbs_ZhSkxpSIbzwPkyubXZt29JpD2JA2B76ilZwCEPkhsIrWxRyXXftc8Cih1RfwcZ_hmV06641CUCsF-cIB2JNym69KhRW9I_KVyAFtlKJ8aGoHHFhsDoEn9-hYli0W6dy_LCTKSFswYUDaPq6z4p54K4QeFiysTmdOK_CWg0x0wMGaVkaZVTMPkyUg"
+			"value": ""
 		},
 		{
 			"key": "student-token",
