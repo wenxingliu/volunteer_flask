@@ -24,9 +24,9 @@ The `./backend` directory contains a Flask server with endpoints, configure, and
 1. Fill in `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET` in `backend/auth/credential.py`.
 2. cd into `backend`, run `pip install -r requirements.txt` to install the dependencies, and then activate the environment by running `source env/bin/activate`.
 ```
-cd backend
-pip install -r requirements.txt
-source env/bin/activate
+$ cd backend
+$ pip install -r requirements.txt
+$ source env/bin/activate
 ```
 3. Run `python app.py` to start the backend.
 4. Fill in `<client_id>` in the following link. Open a browser and go to the link to log in. 
