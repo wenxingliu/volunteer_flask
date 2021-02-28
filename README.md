@@ -26,5 +26,5 @@ The `./backend` directory contains a Flask server with endpoints, configure, and
 3. Run `app.py` to start the backend.
 4. Open a browser and go to `https://find-a-volunteer.us.auth0.com/authorize?audience=volunteer&response_type=token&client_id=<client_id>&redirect_uri=http://127.0.0.1:8002/home` to log in. 
 5. The redirect url will be in the format of `http://127.0.0.1:8002/home#access_token=<token>&scope=openid%20profile%20email&expires_in=7200&token_type=Bearer&state=<state>`. Extract token from the redirect url.
-6. Open Postman, import [Postman Collection](./backend/Capstone_Project-volunteer_flask_app.postman_collection.json`). Set `admin_token`, `volunteer_token` and `student)token` in project variables.
+6. Open Postman, import [Postman Collection](./backend/Capstone_Project-volunteer_flask_app.postman_collection.json). Set `admin_token`, `volunteer_token` and `student)token` in project variables.
 7. Test APIs in the Postman collection.
