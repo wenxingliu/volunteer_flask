@@ -64,11 +64,21 @@
 				{
 					"name": "register volunteer",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{volunteer-token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Wenxing Liu\",\n    \"age\": 33,\n    \"gender\": \"Female\",\n    \"email\": \"wenxingliu@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_student\": \"Yes\",\n    \"seeking_description\": \"Teaches Chinese, Maths, English\"\n}",
+							"raw": "{\n    \"name\": \"Minyon\",\n    \"age\": 1,\n    \"gender\": \"Male\",\n    \"email\": \"minyon@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_student\": \"No\",\n    \"seeking_description\": \"Teaches Chinese, Maths, English\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -212,11 +222,21 @@
 				{
 					"name": "register student",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{volunteer-student}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Zhan Shi\",\n    \"age\": 34,\n    \"gender\": \"Male\",\n    \"email\": \"zhanshi@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_volunteer\": \"Yes\",\n    \"seeking_description\": \"I want to practice my Chinese, and English!\"\n}",
+							"raw": "{\n    \"name\": \"Zhan\",\n    \"age\": 4,\n    \"gender\": \"Male\",\n    \"email\": \"zhanshi@me.com\",\n    \"image_link\": \"https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAABy3-hIQRcT8QpykdK6OdWi7yQ.png\",\n    \"seeking_volunteer\": \"Yes\",\n    \"seeking_description\": \"I want to practice my Chinese, and English!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -420,6 +440,16 @@
 				{
 					"name": "delete classroom",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{volunteer-token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
