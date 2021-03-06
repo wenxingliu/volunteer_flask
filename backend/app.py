@@ -13,7 +13,6 @@ import util as util
 def index():
     return jsonify({"text": 'Welcome!', "success": True}), 200
 
-
 @app.route('/volunteers')
 @auth.requires_auth("get:volunteers")
 def get_volunteers():

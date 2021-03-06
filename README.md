@@ -18,6 +18,9 @@ The `./backend` directory contains a Flask server with endpoints, configure, and
 
 [View the API Document.md within ./backend for more details on API endpoints.](./backend/API.md)
 
+
+### Roles And Permissions
+
 There are three types of roles: Admin, Volunteer and Student. 
 Admin has the following permissions:
 ```
@@ -57,9 +60,6 @@ delete:student
 ```
 Admin have permissions to post, delete or update all any resources.
 
-### Tests
-
-
 ### Setup
 
 1. cd into `backend`, run `pip install -r requirements.txt` to install the dependencies, and then activate the environment by running `source env/bin/activate`.
@@ -83,3 +83,8 @@ http://127.0.0.1:8002/home#access_token=<token>&scope=openid%20profile%20email&e
 ```
 6. Open Postman, import [Postman Collection](./backend/Capstone_Project-volunteer_flask_app.postman_collection.json). Set `admin_token`, `volunteer_token` and `student)token` in project variables.
 7. Test APIs in the Postman collection.
+
+
+### Tests
+
+Please find API tests in [test_api.py](./backend/test_api.py).
