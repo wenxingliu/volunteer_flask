@@ -18,6 +18,47 @@ The `./backend` directory contains a Flask server with endpoints, configure, and
 
 [View the API Document.md within ./backend for more details on API endpoints.](./backend/API.md)
 
+There are three types of roles: Admin, Volunteer and Student. 
+Admin has the following permissions:
+```
+get:classrooms
+get:students
+get:volunteers
+post:classroom
+post:student
+post:volunteer
+patch:classroom
+patch:student
+patch:volunteer
+delete:classroom
+delete:student
+delete:volunteer
+```
+Volunteer has the following permissions:
+```
+get:classrooms
+get:students
+get:volunteers
+post:classroom
+post:volunteer
+patch:classroom
+patch:volunteer
+delete:classroom
+delete:volunteer
+```
+a student role has the following permissions:
+```
+get:classrooms
+get:students
+get:volunteers
+patch:student
+post:student
+delete:student
+```
+Admin have permissions to post, delete or update all any resources.
+
+### Tests
+
 
 ### Setup
 
@@ -29,9 +70,9 @@ $ pip install -r requirements.txt
 $ source env/bin/activate
 ```
 3. Run `python app.py` to start the backend.
-4. Fill in `<client_id>` in the following link. Open a browser and go to the link to log in. 
+4. Open a browser and go to the link to log in. 
 ```
-https://find-a-volunteer.us.auth0.com/authorize?audience=volunteer&response_type=token&client_id=<client_id>&redirect_uri=http://127.0.0.1:8002/home
+https://find-a-volunteer.us.auth0.com/authorize?audience=volunteer&response_type=token&client_id=JPFdgL5PK21ity4fQ2SrEmnujSnUC0it&redirect_uri=http://127.0.0.1:8002/home
 ```
 5. The redirect url will be in the following format. Extract token from the redirect url.
 ```

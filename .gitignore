@@ -130,4 +130,4 @@ dmypy.json
 .pyre/
 
 # Credentials
-backend/auth/credential.py
+./backend/auth/credential.py
