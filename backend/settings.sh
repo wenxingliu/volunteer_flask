@@ -1,0 +1,3 @@
+export AUTH0_DOMAIN="find-a-volunteer.us.auth0.com"
+export AUTH0_CLIENT_ID="JPFdgL5PK21ity4fQ2SrEmnujSnUC0it"
+export AUTH0_CLIENT_SECRET="ZsheG11BlHIYclvi3tWaI9uu7WHcmMNDSD4GbHLY_oKNHmsnJVOpOU-Hnm4491zC"

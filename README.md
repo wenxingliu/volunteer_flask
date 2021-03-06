@@ -62,12 +62,15 @@ Admin have permissions to post, delete or update all any resources.
 
 ### Setup
 
-1. Fill in `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET` in `backend/auth/credential.py`.
-2. cd into `backend`, run `pip install -r requirements.txt` to install the dependencies, and then activate the environment by running `source env/bin/activate`.
+1. cd into `backend`, run `pip install -r requirements.txt` to install the dependencies, and then activate the environment by running `source env/bin/activate`.
 ```
 $ cd backend
 $ pip install -r requirements.txt
 $ source env/bin/activate
+```
+2. Run `settings.sh` file to export variables `AUTH0_DOMAIN` `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET`.
+```
+source settings.sh
 ```
 3. Run `python app.py` to start the backend.
 4. Open a browser and go to the link to log in. 
