@@ -68,9 +68,9 @@ $ cd backend
 $ pip install -r requirements.txt
 $ source env/bin/activate
 ```
-2. Run `settings.sh` file to export variables `AUTH0_DOMAIN` `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET`.
+2. Run `setup.sh` file to export variables `AUTH0_DOMAIN` `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET`.
 ```
-source settings.sh
+source setup.sh
 ```
 3. Run `python app.py` to start the backend.
 4. Open a browser and go to the link to log in. 
