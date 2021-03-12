@@ -8,12 +8,12 @@ from flask import (
     jsonify
 )
 from flask_cors import cross_origin
+import sys
 
 from auth import auth as auth
 from common import app, db, migrate, auth0
 from models import Volunteer, Student, Classroom
 from exceptions import APIException, GenericException
-import sys
 import util as util
 
 
@@ -57,7 +57,7 @@ def get_students():
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -71,7 +71,7 @@ def get_one_volunteer_info(volunteer_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -85,7 +85,7 @@ def get_one_student_info(student_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -99,7 +99,7 @@ def get_one_classroom_info(classroom_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -134,7 +134,7 @@ def get_classrooms_of_one_volunteer(volunteer_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -169,7 +169,7 @@ def get_classrooms_of_one_student(student_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -198,7 +198,7 @@ def register_volunteer():
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Bad Request", 400)
 
 
@@ -227,7 +227,7 @@ def register_student():
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Bad Request", 400)
 
 
@@ -254,7 +254,7 @@ def create_classroom():
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Bad Request", 400)
 
 
@@ -326,7 +326,7 @@ def edit_student(student_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Bad Request", 400)
 
 
@@ -356,8 +356,9 @@ def edit_classroom(classroom_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Bad Request", 400)
+
 
 @app.route('/volunteer/<int:volunteer_id>', methods=['DELETE'])
 @auth.requires_auth("delete:volunteer")
@@ -373,7 +374,7 @@ def remove_volunteer(volunteer_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -391,7 +392,7 @@ def remove_student(student_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -409,7 +410,7 @@ def remove_classroom(classroom_id):
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
@@ -433,7 +434,7 @@ def search_volunteer():
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         print(sys.exc_info())
         raise APIException("Internal Error", 500)
 
@@ -458,7 +459,7 @@ def search_student():
     except GenericException as e:
         raise e
 
-    except:
+    except Exception:
         raise APIException("Internal Error", 500)
 
 
