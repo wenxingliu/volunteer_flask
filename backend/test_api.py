@@ -6,8 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 from app import app
 
-# from models import Volunteer, Student, Classroom
-
 
 class BackendTestCases(unittest.TestCase):
     """This class represents the flask app test case"""
