@@ -1,10 +1,19 @@
-from flask import render_template, request, Response, flash, redirect, url_for, jsonify
+from flask import (
+    render_template, 
+    request, 
+    Response, 
+    flash, 
+    redirect, 
+    url_for, 
+    jsonify
+)
 from flask_cors import cross_origin
 
 from auth import auth as auth
 from common import app, db, migrate, auth0
 from models import Volunteer, Student, Classroom
 from exceptions import APIException, GenericException
+import sys
 import util as util
 
 
@@ -425,6 +434,7 @@ def search_volunteer():
         raise e
 
     except:
+        print(sys.exc_info())
         raise APIException("Internal Error", 500)
 
 
