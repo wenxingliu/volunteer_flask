@@ -65,7 +65,7 @@ Admin have permissions to post, delete or update all any resources.
 1. cd into `backend`, run `pip install -r requirements.txt` to install the dependencies, and then activate the environment by running `source env/bin/activate`.
 ```
 $ cd backend
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 $ source env/bin/activate
 ```
 2. Run `setup.sh` file to export variables `AUTH0_DOMAIN` `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET`.
